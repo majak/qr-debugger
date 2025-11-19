@@ -1,4 +1,3 @@
-import jsQR from 'jsqr';
 
 // Format Information Mask (101010000010010)
 const FORMAT_INFO_MASK = 0x5412;

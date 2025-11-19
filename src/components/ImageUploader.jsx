@@ -12,14 +12,14 @@ const ImageUploader = ({ onScan }) => {
         const reader = new FileReader();
         reader.onload = (event) => {
             const img = new Image();
-            img.onload = () => {
+            img.onload = async () => {
                 const canvas = document.createElement('canvas');
                 canvas.width = img.width;
                 canvas.height = img.height;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0);
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const result = processQR(imageData.data, canvas.width, canvas.height);
+                const result = await processQR(imageData.data, canvas.width, canvas.height);
 
                 if (result) {
                     onScan(result);
