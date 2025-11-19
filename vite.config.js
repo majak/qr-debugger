@@ -8,5 +8,8 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: './',
+  base: '/qr-debugger/',
+  build: {
+    target: 'es2015',
+  },
 })
