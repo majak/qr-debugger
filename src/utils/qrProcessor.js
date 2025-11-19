@@ -9,7 +9,8 @@ const FORMAT_INFO_MASK = 0x5412;
 // Actually, let's just use a small lookup for common versions or maybe just show "Version X (WxH)"
 // Better yet, let's just return the raw data we have and maybe a "Module Size" estimate.
 
-export const processQR = (imageData, width, height) => {
+export const processQR = async (imageData, width, height) => {
+    const jsQR = (await import('jsqr')).default;
     const code = jsQR(imageData, width, height);
 
     if (!code) {

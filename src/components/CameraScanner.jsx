@@ -59,45 +59,44 @@ const CameraScanner = ({ onScan, onClose }) => {
                     });
                 }
             }
-        }; // Removed the extra brace here
-        animationFrameId = requestAnimationFrame(tick);
-    };
+            animationFrameId = requestAnimationFrame(tick);
+        };
 
-    startCamera();
+        startCamera();
 
-    return () => {
-        if (stream) {
-            stream.getTracks().forEach(track => track.stop());
-        }
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-        }
-    };
-}, [onScan]);
+        return () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+        };
+    }, [onScan]);
 
-return (
-    <div className="fixed inset-0 bg-black z-50 flex flex-col">
-        <div className="absolute top-4 right-4 z-10">
-            <button onClick={onClose} className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white">
-                <X size={24} />
-            </button>
-        </div>
-
-        {error && (
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center p-4">
-                <p className="text-red-400 mb-2">{error}</p>
-                <button onClick={onClose} className="bg-white text-black px-4 py-2 rounded">Close</button>
+    return (
+        <div className="fixed inset-0 bg-black z-50 flex flex-col">
+            <div className="absolute top-4 right-4 z-10">
+                <button onClick={onClose} className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white">
+                    <X size={24} />
+                </button>
             </div>
-        )}
 
-        <video ref={videoRef} className="hidden" />
-        <canvas ref={canvasRef} className="w-full h-full object-cover" />
+            {error && (
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center p-4">
+                    <p className="text-red-400 mb-2">{error}</p>
+                    <button onClick={onClose} className="bg-white text-black px-4 py-2 rounded">Close</button>
+                </div>
+            )}
 
-        <div className="absolute bottom-8 left-0 right-0 text-center text-white/70 text-sm">
-            Point camera at a QR code
+            <video ref={videoRef} className="hidden" />
+            <canvas ref={canvasRef} className="w-full h-full object-cover" />
+
+            <div className="absolute bottom-8 left-0 right-0 text-center text-white/70 text-sm">
+                Point camera at a QR code
+            </div>
         </div>
-    </div>
-);
+    );
 };
 
 export default CameraScanner;
