@@ -21,10 +21,10 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-blue-500 selection:text-white">
       {/* Background Gradients */}
-      {/* Background Gradients */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900/20 rounded-full blur-3xl transform-gpu" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-3xl transform-gpu" />
+      {/* Background Grid */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
       </div>
 
       <div className="relative z-10 max-w-md mx-auto min-h-screen flex flex-col p-6">
